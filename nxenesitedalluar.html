@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Faqja e nxënësve të dalluar të Shkollës Dritani.">
+  <meta name="theme-color" content="#123c36">
+  <title>Ndryshimi Që Inspiron | Nxënësit e Dalluar</title>
+  <style>
+    :root {
+      --forest: #123c36;
+      --forest-light: #1e554c;
+      --cream: #fbf8f1;
+      --paper: #ffffff;
+      --ink: #18302d;
+      --muted: #64736f;
+      --line: #e4e8e3;
+      --peach: #ffcda8;
+      --yellow: #f6d66b;
+      --mint: #d7eee3;
+      --blue: #dfeafa;
+      --lilac: #e9e0f7;
+      --coral: #f9dcd3;
+      --shadow: 0 16px 45px rgba(20, 54, 48, 0.08);
+      --radius: 24px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: "Segoe UI", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.dialog-open {
+      overflow: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img,
+    svg {
+      display: block;
+    }
+
+    :focus-visible {
+      outline: 3px solid #e7a33d;
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 100;
+      padding: 12px 18px;
+      color: #fff;
+      background: var(--forest);
+      border-radius: 10px;
+      transform: translateY(-160%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .container {
+      width: min(calc(100% - 48px), var(--max-width));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 5;
+      border-bottom: 1px solid rgba(18, 60, 54, 0.08);
+      background: rgba(251, 248, 241, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      color: var(--cream);
+      background: var(--forest);
+      border-radius: 14px;
+      box-shadow: 0 6px 14px rgba(18, 60, 54, 0.15);
+    }
+
+    .brand-mark svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .brand-copy small {
+      display: block;
+      margin-top: 1px;
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: #425b56;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -6px;
+      left: 0;
+      height: 2px;
+      background: var(--forest);
+      border-radius: 999px;
+      transform: scaleX(0);
+      transition: transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--forest);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-button,
+    .primary-button,
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-button,
+    .primary-button {
+      color: #fff;
+      background: var(--forest);
+      border: 1px solid var(--forest);
+      box-shadow: 0 8px 18px rgba(18, 60, 54, 0.14);
+    }
+
+    .nav-button {
+      min-height: 42px;
+      padding-inline: 18px;
+      font-size: 0.88rem;
+    }
+
+    .nav-button:hover,
+    .primary-button:hover,
+    .secondary-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .nav-button:hover,
+    .primary-button:hover {
+      background: var(--forest-light);
+      box-shadow: 0 12px 24px rgba(18, 60, 54, 0.2);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 84px 0 100px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      border-radius: 50%;
+      filter: blur(1px);
+    }
+
+    .hero::before {
+      width: 300px;
+      height: 300px;
+      top: 32px;
+      right: -100px;
+      background: #e1eee7;
+    }
+
+    .hero::after {
+      width: 180px;
+      height: 180px;
+      bottom: -80px;
+      left: 6%;
+      background: #ffead5;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 24px;
+      color: #376a5e;
+      font-size: 0.77rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: #e6a353;
+      border-radius: 2px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin-bottom: 25px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.25rem, 6.5vw, 5.8rem);
+      font-weight: 500;
+      line-height: 0.99;
+      letter-spacing: -0.055em;
+    }
+
+    h1 em {
+      position: relative;
+      color: var(--forest);
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    h1 em::after {
+      content: "";
+      position: absolute;
+      right: 3px;
+      bottom: -3px;
+      left: 4px;
+      height: 8px;
+      background: var(--peach);
+      border-radius: 50%;
+      transform: rotate(-1deg);
+      z-index: -1;
+    }
+
+    .hero-copy > p {
+      max-width: 560px;
+      margin-bottom: 32px;
+      color: var(--muted);
+      font-size: 1.09rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .primary-button svg,
+    .secondary-button svg,
+    .nav-button svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .secondary-button {
+      color: var(--forest);
+      background: transparent;
+      border: 1px solid #cfd9d4;
+    }
+
+    .secondary-button:hover {
+      background: #fff;
+      border-color: #aabcb4;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 450px;
+      display: grid;
+      place-items: center;
+    }
+
+    .visual-backdrop {
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      background: #e6efe8;
+      border-radius: 48% 52% 43% 57% / 54% 37% 63% 46%;
+      transform: rotate(5deg);
+    }
+
+    .visual-dots {
+      position: absolute;
+      top: 15px;
+      right: 10px;
+      width: 70px;
+      height: 55px;
+      opacity: 0.55;
+      background-image: radial-gradient(#69998d 1.5px, transparent 1.5px);
+      background-size: 12px 12px;
+    }
+
+    .medal {
+      position: relative;
+      width: 188px;
+      height: 222px;
+      filter: drop-shadow(0 22px 20px rgba(18, 60, 54, 0.18));
+      transform: rotate(-6deg);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .medal svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .achievement-card {
+      position: absolute;
+      top: 45px;
+      left: 3px;
+      max-width: 190px;
+      padding: 15px 17px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      background: #fff;
+      border: 1px solid rgba(18, 60, 54, 0.08);
+      border-radius: 17px;
+      box-shadow: var(--shadow);
+      transform: rotate(-5deg);
+    }
+
+    .achievement-card .icon {
+      flex: 0 0 auto;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      color: #6b4c11;
+      background: var(--yellow);
+      border-radius: 11px;
+      font-size: 1.1rem;
+    }
+
+    .achievement-card strong,
+    .achievement-card small {
+      display: block;
+    }
+
+    .achievement-card strong {
+      margin-bottom: 3px;
+      font-size: 0.81rem;
+    }
+
+    .achievement-card small {
+      color: var(--muted);
+      font-size: 0.7rem;
+    }
+
+    .student-quote {
+      position: absolute;
+      right: 0;
+      bottom: 38px;
+      max-width: 230px;
+      padding: 20px 22px;
+      color: #fff;
+      background: var(--forest);
+      border-radius: 20px 20px 20px 5px;
+      box-shadow: var(--shadow);
+      transform: rotate(3deg);
+    }
+
+    .student-quote p {
+      margin-bottom: 9px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.07rem;
+      line-height: 1.45;
+    }
+
+    .student-quote span {
+      color: #c1d9d1;
+      font-size: 0.73rem;
+      font-weight: 600;
+    }
+
+    .sparkle {
+      position: absolute;
+      right: 4px;
+      top: 103px;
+      color: #d69d30;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .sparkle svg {
+      width: 35px;
+      height: 35px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-6deg); }
+      50% { transform: translateY(-9px) rotate(-4deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.55; transform: scale(0.9) rotate(0); }
+      50% { opacity: 1; transform: scale(1.08) rotate(10deg); }
+    }
+
+    .stats-section {
+      position: relative;
+      z-index: 1;
+      margin-top: -36px;
+      padding-bottom: 62px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 28px 0;
+      background: #fff;
+      border: 1px solid rgba(18, 60, 54, 0.06);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      padding: 0 26px;
+      text-align: center;
+    }
+
+    .stat + .stat {
+      border-left: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--forest);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.79rem;
+      font-weight: 600;
+    }
+
+    .students-section {
+      padding: 76px 0 108px;
+      background: #fff;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 32px;
+    }
+
+    .section-heading .eyebrow {
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.55rem);
+      font-weight: 500;
+      line-height: 1.06;
+      letter-spacing: -0.045em;
+    }
+
+    .section-heading p {
+      max-width: 510px;
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .demo-badge {
+      flex: 0 0 auto;
+      padding: 7px 11px;
+      color: #756126;
+      background: #fff7d9;
+      border: 1px solid #f1e3a8;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 32px;
+      padding: 14px;
+      background: #f6f8f5;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .filter-button {
+      min-height: 39px;
+      padding: 0 15px;
+      color: #526762;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: 650;
+      transition: 0.2s ease;
+    }
+
+    .filter-button:hover {
+      color: var(--forest);
+      background: #fff;
+    }
+
+    .filter-button.active {
+      color: #fff;
+      background: var(--forest);
+      box-shadow: 0 5px 12px rgba(18, 60, 54, 0.14);
+    }
+
+    .search-box {
+      position: relative;
+      flex: 0 0 235px;
+    }
+
+    .search-box svg {
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      width: 18px;
+      height: 18px;
+      color: #6b7c77;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .search-box input {
+      width: 100%;
+      min-height: 45px;
+      padding: 0 15px 0 42px;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid #dbe2dd;
+      border-radius: 12px;
+      font-size: 0.87rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-box input::placeholder {
+      color: #86938f;
+    }
+
+    .search-box input:focus {
+      border-color: #6a968b;
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(106, 150, 139, 0.12);
+    }
+
+    .results-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: -13px 0 23px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .results-meta::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: #e4a14b;
+      border-radius: 50%;
+    }
+
+    .students-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .student-card {
+      position: relative;
+      min-height: 385px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 25px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 7px 24px rgba(20, 54, 48, 0.035);
+      animation: appear 0.35s ease both;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .student-card:hover {
+      border-color: #cddbd4;
+      box-shadow: var(--shadow);
+      transform: translateY(-5px);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 23px;
+    }
+
+    .avatar {
+      position: relative;
+      width: 70px;
+      height: 70px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--forest);
+      border-radius: 22px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .avatar::after {
+      content: "✦";
+      position: absolute;
+      right: -6px;
+      bottom: -5px;
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      color: #785312;
+      background: var(--yellow);
+      border: 3px solid #fff;
+      border-radius: 50%;
+      font-size: 0.67rem;
+    }
+
+    .subject {
+      padding: 6px 10px;
+      color: #456158;
+      background: #f3f6f3;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 750;
+    }
+
+    .student-card h3 {
+      margin-bottom: 5px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+    }
+
+    .class-name {
+      display: block;
+      margin-bottom: 16px;
+      color: #80908b;
+      font-size: 0.76rem;
+      font-weight: 650;
+    }
+
+    .student-card > p {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: auto 0 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: 5px 8px;
+      color: #536a63;
+      background: #f7f8f5;
+      border-radius: 6px;
+      font-size: 0.67rem;
+      font-weight: 650;
+    }
+
+    .card-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 15px;
+      color: var(--forest);
+      background: none;
+      border: 0;
+      border-top: 1px solid var(--line);
+      font-size: 0.79rem;
+      font-weight: 750;
+    }
+
+    .card-link span:last-child {
+      display: grid;
+      place-items: center;
+      width: 29px;
+      height: 29px;
+      background: #edf3ef;
+      border-radius: 50%;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .card-link:hover span:last-child {
+      background: var(--peach);
+      transform: translateX(3px);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 60px 24px;
+      text-align: center;
+      background: #f8faf7;
+      border: 1px dashed #cdd9d3;
+      border-radius: var(--radius);
+    }
+
+    .empty-state .empty-icon {
+      margin: 0 auto 14px;
+      color: #719088;
+    }
+
+    .empty-state h3 {
+      margin-bottom: 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .empty-state p {
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .empty-state button {
+      padding: 10px 16px;
+      color: #fff;
+      background: var(--forest);
+      border: 0;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .community-section {
+      padding: 95px 0;
+      background: var(--cream);
+    }
+
+    .community-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 45px;
+      padding: 60px 65px;
+      color: #fff;
+      background: var(--forest);
+      border-radius: 32px;
+    }
+
+    .community-card::before {
+      content: "";
+      position: absolute;
+      top: -150px;
+      right: -70px;
+      width: 370px;
+      height: 370px;
+      border: 70px solid rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+
+    .community-card .eyebrow {
+      color: #acd0c3;
+    }
+
+    .community-card h2 {
+      max-width: 630px;
+      margin-bottom: 17px;
+    }
+
+    .community-card p {
+      max-width: 570px;
+      margin-bottom: 26px;
+      color: #b9d0c9;
+      line-height: 1.75;
+    }
+
+    .community-card .primary-button {
+      color: var(--forest);
+      background: var(--yellow);
+      border-color: var(--yellow);
+    }
+
+    .community-card .primary-button:hover {
+      background: #ffe18d;
+    }
+
+    .values {
+      position: relative;
+      display: grid;
+      gap: 12px;
+    }
+
+    .value {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 17px 19px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      backdrop-filter: blur(5px);
+    }
+
+    .value-icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      color: var(--forest);
+      background: var(--peach);
+      border-radius: 12px;
+    }
+
+    .value:nth-child(2) .value-icon {
+      background: var(--yellow);
+    }
+
+    .value:nth-child(3) .value-icon {
+      background: var(--mint);
+    }
+
+    .value strong,
+    .value small {
+      display: block;
+    }
+
+    .value strong {
+      margin-bottom: 3px;
+      font-size: 0.85rem;
+    }
+
+    .value small {
+      color: #b9d0c9;
+      font-size: 0.73rem;
+      line-height: 1.4;
+    }
+
+    .site-footer {
+      padding: 28px 0;
+      color: #677873;
+      background: #f1ede3;
+      font-size: 0.78rem;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--forest);
+      font-weight: 750;
+    }
+
+    .footer-brand svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    dialog {
+      width: min(calc(100% - 32px), 590px);
+      max-height: calc(100dvh - 32px);
+      padding: 0;
+      overflow: auto;
+      color: var(--ink);
+      background: #fff;
+      border: 0;
+      border-radius: 28px;
+      box-shadow: 0 28px 90px rgba(8, 35, 30, 0.3);
+    }
+
+    dialog::backdrop {
+      background: rgba(10, 33, 29, 0.55);
+      backdrop-filter: blur(5px);
+    }
+
+    .dialog-hero {
+      position: relative;
+      padding: 35px 36px 32px;
+      background: #eaf2ec;
+      border-bottom: 1px solid #dce7df;
+    }
+
+    .dialog-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: var(--forest);
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(18, 60, 54, 0.1);
+      border-radius: 50%;
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .dialog-close:hover {
+      background: #fff;
+    }
+
+    .dialog-profile {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding-right: 45px;
+    }
+
+    .dialog-profile .avatar {
+      width: 78px;
+      height: 78px;
+    }
+
+    .dialog-profile h2 {
+      margin: 4px 0 3px;
+      font-size: 2.05rem;
+    }
+
+    .dialog-profile p {
+      margin: 0;
+      color: #62766f;
+      font-size: 0.82rem;
+      font-weight: 650;
+    }
+
+    .dialog-content {
+      padding: 30px 36px 36px;
+    }
+
+    .dialog-content > p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .dialog-content h3 {
+      margin: 26px 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.28rem;
+      font-weight: 500;
+    }
+
+    .achievement-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .achievement-list li {
+      position: relative;
+      padding: 12px 14px 12px 39px;
+      color: #4c635d;
+      background: #f7f9f6;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+
+    .achievement-list li::before {
+      content: "✓";
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      color: #3f7868;
+      font-weight: 800;
+    }
+
+    @media (max-width: 950px) {
+      .nav-links {
+        gap: 19px;
+      }
+
+      .nav-links a {
+        font-size: 0.82rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr 0.8fr;
+        gap: 35px;
+      }
+
+      h1 {
+        font-size: clamp(3.1rem, 7vw, 4.7rem);
+      }
+
+      .hero-visual {
+        transform: scale(0.88);
+      }
+
+      .students-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column-reverse;
+      }
+
+      .search-box {
+        flex-basis: auto;
+      }
+
+      .community-card {
+        grid-template-columns: 1fr;
+        padding: 48px;
+      }
+
+      .values {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .value {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(calc(100% - 32px), var(--max-width));
+      }
+
+      .nav {
+        min-height: 74px;
+      }
+
+      .nav-links a {
+        display: none;
+      }
+
+      .nav-button {
+        min-height: 39px;
+        padding-inline: 15px;
+        font-size: 0.79rem;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-copy > span {
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 60px 0 75px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      h1 {
+        font-size: clamp(3.05rem, 14vw, 4.4rem);
+      }
+
+      h1 em {
+        white-space: normal;
+      }
+
+      .hero-copy > p {
+        font-size: 0.98rem;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+        transform: scale(0.9);
+      }
+
+      .visual-backdrop {
+        width: 315px;
+        height: 315px;
+      }
+
+      .achievement-card {
+        left: 0;
+      }
+
+      .student-quote {
+        right: 4px;
+      }
+
+      .stats-section {
+        padding-bottom: 45px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px 0;
+      }
+
+      .stat {
+        padding: 16px 10px;
+      }
+
+      .stat:nth-child(3) {
+        border-left: 0;
+      }
+
+      .stat:nth-child(n + 3) {
+        border-top: 1px solid var(--line);
+      }
+
+      .stat strong {
+        font-size: 1.65rem;
+      }
+
+      .stat span {
+        font-size: 0.72rem;
+      }
+
+      .students-section {
+        padding: 60px 0 75px;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .toolbar {
+        padding: 10px;
+      }
+
+      .filters {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .filter-button {
+        padding-inline: 8px;
+        font-size: 0.75rem;
+      }
+
+      .students-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .student-card {
+        min-height: 355px;
+      }
+
+      .community-section {
+        padding: 65px 0;
+      }
+
+      .community-card {
+        gap: 30px;
+        padding: 35px 25px;
+        border-radius: 24px;
+      }
+
+      .values {
+        grid-template-columns: 1fr;
+      }
+
+      .value {
+        align-items: center;
+        flex-direction: row;
+      }
+
+      .footer-content {
+        align-items: start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .dialog-hero {
+        padding: 28px 24px;
+      }
+
+      .dialog-content {
+        padding: 25px 24px 30px;
+      }
+
+      .dialog-profile .avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 18px;
+      }
+
+      .dialog-profile h2 {
+        font-size: 1.65rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#nxenesit">Kalo te nxënësit e dalluar</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navigimi kryesor">
+      <a class="brand" href="#" aria-label="Dritani, faqja kryesore">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2.8 14.5 8l5.8.7-4.2 4 1.1 5.7-5.2-2.8-5.2 2.8 1.1-5.7-4.2-4L9.5 8 12 2.8Z" fill="currentColor"/>
+            <path d="m8.5 14.5-2 6M15.5 14.5l2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <span>Shkolla “Dritani”</span>
+          <small>Merrim sipas dritës</small>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#nxenesit">Nxënësit e dalluar</a>
+        <a href="#vlera">Arritjet</a>
+        <a href="#bashkimi">Bashkë ndërtojmë</a>
+      </div>
+
+      <a class="nav-button" href="#nxenesit">
+        Shpalljet
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="m5 8 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Sezoni 2025–2026</p>
+          <h1 id="hero-title">Dallimi fillon <em>brenda nesh.</em></h1>
+          <p>Çdo nxënës ka një histori të vetëm që meriton të dëgjohet. Fuseh të shkruajmë për guximin, përkushtimin dhe zellin që i japin shkollës tonë identitet.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#nxenesit">
+              Zbulo historitë e tyre
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a class="secondary-button" href="#vlera">Zgjidh një vlerë</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Ilustrim i një medalje dhe arritjeje shkollore">
+          <div class="visual-backdrop" aria-hidden="true"></div>
+          <div class="visual-dots" aria-hidden="true"></div>
+
+          <div class="medal" aria-hidden="true">
+            <svg viewBox="0 0 188 222" fill="none">
+              <path d="M49 8h38l-13 65-22-3L49 8Z" fill="#1d554c"/>
+              <path d="M102 8h37l-4 62-22 3L102 8Z" fill="#3b7064"/>
+              <circle cx="94" cy="148" r="64" fill="#F0C65B" stroke="#FFF7DB" stroke-width="8"/>
+              <circle cx="94" cy="148" r="48" fill="#F6D66B" stroke="#D9A93E" stroke-width="2"/>
+              <path d="m94 106 10.8 21.8 24.1 3.5-17.4 17 4.1 24-21.6-11.4-21.6 11.4 4.1-24-17.4-17 24.1-3.5L94 106Z" fill="#17463E"/>
+              <path d="M75 148h12l5-12 8 25 6-13h12" stroke="#F6D66B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="achievement-card" aria-hidden="true">
+            <span class="icon">★</span>
+            <span>
+              <strong>Arritje e re!</strong>
+              <small>Besimi çdo ditë</small>
+            </span>
+          </div>
+
+          <div class="student-quote" aria-hidden="true">
+            <p>“Një hap i vogël çdo ditë bëhet një rrugë e madhe.”</p>
+            <span>— Motoja e shkollës sonë</span>
+          </div>
+
+          <span class="sparkle" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none">
+              <path d="M20 2c.8 11.2 6.8 17.2 18 18-11.2.8-17.2 6.8-18 18C19.2 26.8 13.2 20.8 2 20 13.2 19.2 19.2 13.2 20 2Z" fill="currentColor"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section" aria-label="Shifrat e shkollës">
+      <div class="container">
+        <div class="stats">
+          <div class="stat">
+            <strong>128</strong>
+            <span>nxënës në shkollë</span>
+          </div>
+          <div class="stat">
+            <strong>24</strong>
+            <span>nxënës të dalluar</span>
+          </div>
+          <div class="stat">
+            <strong>6</strong>
+            <span>hapsa të ndryshme</span>
+          </div>
+          <div class="stat">
+            <strong>100%</strong>
+            <span>përkushtim dhe dashuri</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="students-section" id="nxenesit" aria-labelledby="students-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Guri ynë, krenja e jonë</p>
+            <h2 id="students-title">Ndryshimi që frymëzon</h2>
+            <p>Këtu i njohim nxënësit që e përfaqësojnë shkollën tonë në klasë, në sport, në kërkime dhe në komunitet.</p>
+          </div>
+          <span class="demo-badge">Të dhëna shembull</span>
+        </div>
+
+        <div class="toolbar" aria-label="Mjetet për të kërkuar nxënësit">
+          <div class="filters" role="group" aria-label="Filtro sipas fushës">
+            <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">Të gjithë</button>
+            <button class="filter-button" type="button" data-filter="matematike" aria-pressed="false">Matematikë</button>
+            <button class="filter-button" type="button" data-filter="arte" aria-pressed="false">Arte</button>
+            <button class="filter-button" type="button" data-filter="shkenca" aria-pressed="false">Shkencë</button>
+            <button class="filter-button" type="button" data-filter="sport" aria-pressed="false">Sport</button>
+            <button class="filter-button" type="button" data-filter="debat" aria-pressed="false">Debat</button>
+            <button class="filter-button" type="button" data-filter="gjuha" aria-pressed="false">Gjuha shqipe</button>
+          </div>
+
+          <label class="search-box">
+            <span hidden>Kërko nxënësin</span>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.7"/>
+              <path d="m13 13 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+            <input id="student-search" type="search" placeholder="Kërko emrin…" autocomplete="off" aria-label="Kërko sipas emrit të nxënësit">
+          </label>
+        </div>
+
+        <p class="results-meta" id="results-meta" role="status" aria-live="polite">Duke shfaqur 6 nxënës</p>
+        <div class="students-grid" id="students-grid" aria-live="polite"></div>
+        <noscript>
+          <p>Ju lutemi aktivizoni JavaScript për të parë kartat e nxënësve dhe filtrat.</p>
+        </noscript>
+      </div>
+    </section>
+
+    <section class="community-section" id="bashkimi" aria-labelledby="community-title">
+      <div class="container">
+        <div class="community-card">
+          <div>
+            <p class="eyebrow">Çdo histori meriton vend</p>
+            <h2 id="community-title">Dallimi bëhet i dukshëm kur ia njohim kohën që i kushtojmë.</h2>
+            <p>Faleminderit prindërve, mësuesve dhe bashkënxënësve që e mbështesin secilin nxënës. Kur respektojmë përpjekjen, i lejojmë të ardhshmërisë të ndihmojë.</p>
+            <a class="primary-button" href="#nxenesit">Shpalljet e nxënësve</a>
+          </div>
+
+          <div class="values" id="vlera">
+            <div class="value">
+              <span class="value-icon" aria-hidden="true">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+                  <path d="m12 3 2.5 5.2 5.5.8-4 3.9 1 5.6-5-2.7-5 2.7 1-5.6-4-3.9 5.5-.8L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>
+                <strong>Përkushtim</strong>
+                <small>Asnjë hap nuk ka të vërtetë rëndësi vetëm.</small>
+              </span>
+            </div>
+            <div class="value">
+              <span class="value-icon" aria-hidden="true">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+                  <path d="M8 12.5 10.7 15 16.5 9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </span>
+              <span>
+                <strong>Besim</strong>
+                <small>Ne i mbështesim pasionet e reja.</small>
+              </span>
+            </div>
+            <div class="value">
+              <span class="value-icon" aria-hidden="true">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 9h16M7 4h10v3H7zM6 9v10h12V9M10 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>
+                <strong>Bashkësi</strong>
+                <small>Suksesi është më i bukur bashkë.</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content container">
+      <span class="footer-brand">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3 14.4 8l5.6.8-4 4 .9 5.5L12 15.8l-4.9 2.5.9-5.5-4-4L9.6 8 12 3Z" fill="currentColor"/>
+        </svg>
+        Shkolla “Dritani”
+      </span>
+      <span>Faqe shembull për nxënësit e dalluar · 2025–2026</span>
+    </div>
+  </footer>
+
+  <dialog id="student-dialog" aria-labelledby="dialog-name">
+    <div class="dialog-hero">
+      <button class="dialog-close" type="button" aria-label="Mbyll informacionin">×</button>
+      <div class="dialog-profile">
+        <span class="avatar" id="dialog-avatar" aria-hidden="true"></span>
+        <div>
+          <span class="subject" id="dialog-subject"></span>
+          <h2 id="dialog-name"></h2>
+          <p id="dialog-class"></p>
+        </div>
+      </div>
+    </div>
+    <div class="dialog-content">
+      <p id="dialog-description"></p>
+      <h3>Arritjet që e bëjnë të dalluar</h3>
+      <ul class="achievement-list" id="dialog-achievements"></ul>
+    </div>
+  </dialog>
+
+  <script>
+    const students = [
+      {
+        name: "Elion Berisha",
+        initials: "EB",
+        className: "Klasa IX-A",
+        category: "matematike",
+        subject: "Matematikë",
+        avatar: "#dfeafa",
+        description: "Përkushtimi i tij ndërthur matematikën me logjikën creative. Gjen zgjidhje të thjeshta edhe te problemet më të vështira, ndërsa shpjegon idenë që i ka ndihmuar të arrijë deri te përgjigjja.",
+        tags: ["Olimpiadë", "Logjikë"],
+        achievements: ["Pjesëmarrës në olimpiadën komunale të matematikës", "Prezantim i një projekti me qarqe dhe trigonometri", "Tutor i pavarur për nxënësit e klasës së tij"]
+      },
+      {
+        name: "Elara Krasniqi",
+        initials: "EK",
+        className: "Klasa VIII-B",
+        category: "arte",
+        subject: "Arte",
+        avatar: "#f9dcd3",
+        description: "Elara e shpreh zërin e saj me ngjyra dhe tekstura. Instalimet e saj përshkruajnë botën që i rrethon dhe kanë marrë vlerësime në ekspozitën e shkollës.",
+        tags: ["Pikturë", "Instalim"],
+        achievements: ["Çmim i parë në konkursin e artit shkollor", "Pjesëmarrëse në ekspozitën “Ngjyra e fëmijërisë”", "Koordinatore e punëshërbimit të festivalit kulturor"]
+      },
+      {
+        name: "Arben Sala",
+        initials: "AS",
+        className: "Klasa X-A",
+        category: "shkenca",
+        subject: "Shkencë",
+        avatar: "#d7eee3",
+        description: "Pyetja e tij nuk ndalet te përgjigjja e parë. Në laborator ai vëzhgon me kujdes, merr shënime dhe transformon ide të thjeshta në eksimente të qarta.",
+        tags: ["Laborator", "Kërkim"],
+        achievements: ["Vlerësimi më i lartë në konkursin e shkencave natyrore", "Autor i një projekti mbi cilësinë e ujërit në kantier", "Anëtar i klubit të shkencës së re"]
+      },
+      {
+        name: "Noa Gashi",
+        initials: "NG",
+        className: "Klasa VII-A",
+        category: "sport",
+        subject: "Sport",
+        avatar: "#f6d66b",
+        description: "Lojës i energjisë dhe i shpirtit ekipit, Noa gjen kënaqësi në ndihmën e të tjerëve. Beson se më i miri ekip çdo ditë lë pa shkuar.",
+        tags: ["Ekip", "Përgjegjësi"],
+        achievements: ["Anëtar i skuadrës së shkollës në handball", "Kapitane e skuadrës femimore të vogëlëve", "Fitues i çmimit ‘Shpirti i ekipit’"]
+      },
+      {
+        name: "Lea Kodra",
+        initials: "LK",
+        className: "Klasa IX-C",
+        category: "debat",
+        subject: "Debat",
+        avatar: "#e9e0f7",
+        description: "Lea dëgjon me kujdes, mendon në thellësi dhe argumenton pa e humburur qëllimin. Fjalët e saj e ndihmojnë ekipin të zhvillojë diskutime më të ndryshme.",
+        tags: ["Argumentim", "Debat"],
+        achievements: ["Kapitane e ekipit shkollor të debatës", "Pjesëmarrëse në konkursin rajonal të retorikës", "Shkruese e revistës së shkollës"]
+      },
+      {
+        name: "Etrit Dema",
+        initials: "ED",
+        className: "Klasa VIII-A",
+        category: "gjuha",
+        subject: "Gjuha shqipe",
+        avatar: "#f5e3bc",
+        description: "Një dashur i fjalëve dhe i historisë, Etrit e bën të zëshme çdo faqe. Zgjedhja e tij e kujdesshme e fjalëve tregon se i respekton thellësinë e gjuhës sonë.",
+        tags: ["Poezi", "Libër"],
+        achievements: ["Çmim në konkursin e recitimit", "Pjesëmarrës në takimin e klubit të letërsisë", "Rekomandues i librave në bibliotekën e shkollës"]
+      }
+    ];
+
+    const grid = document.getElementById("students-grid");
+    const resultsMeta = document.getElementById("results-meta");
+    const searchInput = document.getElementById("student-search");
+    const filterButtons = [...document.querySelectorAll(".filter-button")];
+    const dialog = document.getElementById("student-dialog");
+    const closeDialogButton = dialog.querySelector(".dialog-close");
+    let activeCategory = "all";
+
+    const escapeHtml = (value) => value.replace(/[&<>'"]/g, (character) => ({
+      "&": "&",
+      "<": "<",
+      ">": ">",
+      "'": "&#039;",
+      '"': ""
+    })[character]);
+
+    const normalizeText = (value) => value
+      .toLocaleLowerCase("sq")
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "");
+
+    function renderStudents() {
+      const query = normalizeText(searchInput.value.trim());
+      const filteredStudents = students.filter((student) => {
+        const matchesCategory = activeCategory === "all" || student.category === activeCategory;
+        const searchableText = normalizeText(`${student.name} ${student.className} ${student.subject}`);
+        return matchesCategory && searchableText.includes(query);
+      });
+
+      resultsMeta.textContent = filteredStudents.length === 1
+        ? "Duke shfaqur 1 nxënës"
+        : `Duke shfaqur ${filteredStudents.length} nxënës`;
+
+      if (filteredStudents.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon" aria-hidden="true">
+              <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
+                <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/>
+                <path d="m15.5 15.5 4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Nuk gjetëm asnjë nxënës</h3>
+            <p>Provo një emër tjetër ose zgjidh një fushë të ndryshme.</p>
+            <button type="button" id="clear-filters">Pastro filtrat</button>
+          </div>`;
+        document.getElementById("clear-filters").addEventListener("click", clearFilters);
+        return;
+      }
+
+      grid.innerHTML = filteredStudents.map((student, index) => `
+        <article class="student-card" style="animation-delay: ${index * 45}ms">
+          <div class="card-top">
+            <span class="avatar" style="background: ${student.avatar}" aria-hidden="true">${escapeHtml(student.initials)}</span>
+            <span class="subject">${escapeHtml(student.subject)}</span>
+          </div>
+          <h3>${escapeHtml(student.name)}</h3>
+          <span class="class-name">${escapeHtml(student.className)}</span>
+          <p>${escapeHtml(student.description)}</p>
+          <ul class="tag-list" aria-label="Fusha e përfitimeve">
+            ${student.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("")}
+          </ul>
+          <button class="card-link" type="button" data-student-index="${students.indexOf(student)}" aria-label="Shiko arritjet e ${escapeHtml(student.name)}">
+            <span>Shiko arritjet</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </article>`).join("");
+    }
+
+    function clearFilters() {
+      activeCategory = "all";
+      searchInput.value = "";
+      filterButtons.forEach((button) => {
+        const isActive = button.dataset.filter === "all";
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+      renderStudents();
+    }
+
+    function openStudentDialog(student) {
+      document.getElementById("dialog-name").textContent = student.name;
+      document.getElementById("dialog-class").textContent = student.className;
+      document.getElementById("dialog-subject").textContent = student.subject;
+      document.getElementById("dialog-description").textContent = student.description;
+
+      const avatar = document.getElementById("dialog-avatar");
+      avatar.textContent = student.initials;
+      avatar.style.background = student.avatar;
+
+      const achievementList = document.getElementById("dialog-achievements");
+      achievementList.replaceChildren(...student.achievements.map((achievement) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = achievement;
+        return listItem;
+      }));
+
+      document.body.classList.add("dialog-open");
+      dialog.showModal();
+    }
+
+    function closeStudentDialog() {
+      dialog.close();
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeCategory = button.dataset.filter;
+        filterButtons.forEach((filterButton) => {
+          const isActive = filterButton === button;
+          filterButton.classList.toggle("active", isActive);
+          filterButton.setAttribute("aria-pressed", String(isActive));
+        });
+        renderStudents();
+      });
+    });
+
+    searchInput.addEventListener("input", renderStudents);
+
+    grid.addEventListener("click", (event) => {
+      const cardButton = event.target.closest("[data-student-index]");
+      if (cardButton) {
+        const student = students[Number(cardButton.dataset.studentIndex)];
+        if (student) openStudentDialog(student);
+      }
+    });
+
+    closeDialogButton.addEventListener("click", closeStudentDialog);
+
+    dialog.addEventListener("click", (event) => {
+      const bounds = dialog.getBoundingClientRect();
+      const clickedOutside = event.clientX < bounds.left || event.clientX > bounds.right ||
+        event.clientY < bounds.top || event.clientY > bounds.bottom;
+      if (clickedOutside) closeStudentDialog();
+    });
+
+    dialog.addEventListener("close", () => {
+      document.body.classList.remove("dialog-open");
+    });
+
+    renderStudents();
+  </script>
+</body>
+</html>
