@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mësimdhënësit</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+        }
+
+        .teachers {
+            padding: 60px 30px;
+        }
+
+        .teachers h2 {
+            text-align: center;
+            color: #1769aa;
+            font-size: 35px;
+            margin-bottom: 40px;
+        }
+
+        .teacher-container {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .teacher-card {
+            background-color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 20px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+            transition: 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .teacher-card img {
+            width: 140px;
+            height: 140px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 5px solid #1769aa;
+
+            margin-bottom: 15px;
+        }
+
+        .teacher-card h3 {
+            font-size: 24px;
+            color: #1769aa;
+            margin-bottom: 10px;
+        }
+
+        .teacher-card span {
+            display: inline-block;
+
+            background-color: #1769aa;
+            color: white;
+
+            padding: 7px 18px;
+
+            border-radius: 20px;
+
+            margin-bottom: 20px;
+        }
+
+        .teacher-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .comment {
+            margin-top: 20px;
+            padding: 15px;
+
+            background-color: #f8f9fa;
+
+            border-radius: 12px;
+
+            color: #555;
+            font-style: italic;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 700px) {
+            .teacher-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<section class="teachers">
+
+    <h2>Mësimdhënësit Tanë</h2>
+
+    <div class="teacher-container">
+
+       
+        <div class="teacher-card">
+
+            <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                 alt="Arben Krasniqi">
+
+            <h3>Arben Krasniqi</h3>
+
+            <span>Matematikë</span>
+
+            <p>
+                Mësimdhënës i matematikës.
+                Shpjegon temat qartë dhe ndihmon
+                nxënësit gjatë ushtrimeve.
+            </p>
+
+            <div class="comment">
+                <div class="stars">★★★★★</div>
+
+                "Shpjegon matematikën shumë mirë
+                dhe është shumë i durueshëm."
+            </div>
+
+        </div>
+
+
+       
+        <div class="teacher-card">
+
+            <img src="https://randomuser.me/api/portraits/women/44.jpg"
+                 alt="Elira Hoxha">
+
+            <h3>Elira Hoxha</h3>
+
+            <span>Informatikë</span>
+
+            <p>
+                Mësimdhënëse e informatikës.
+                Ora e saj përfshin shumë punë
+                praktike në kompjuter.
+            </p>
+
+            <div class="comment">
+                <div class="stars">★★★★★</div>
+
+                "Ora e informatikës është shumë
+                interesante dhe praktike."
+            </div>
+
+        </div>
+
+
+      
+        <div class="teacher-card">
+
+            <img src="https://randomuser.me/api/portraits/men/45.jpg"
+                 alt="Besnik Gashi">
+
+            <h3>Besnik Gashi</h3>
+
+            <span>Fizikë</span>
+
+            <p>
+                Mësimdhënës i fizikës.
+                Përdor eksperimente dhe shembuj
+                praktikë gjatë mësimit.
+            </p>
+
+            <div class="comment">
+                <div class="stars">★★★★☆</div>
+
+                "Eksperimentet na ndihmojnë
+                ta kuptojmë më mirë fizikën."
+            </div>
+
+        </div>
+
+
+       
+        <div class="teacher-card">
+
+            <img src="https://randomuser.me/api/portraits/women/65.jpg"
+                 alt="Amina Berisha">
+
+            <h3>Amina Berisha</h3>
+
+            <span>Gjuhë Shqipe</span>
+
+            <p>
+                Mësimdhënëse e gjuhës shqipe.
+                Inkurajon nxënësit të lexojnë
+                dhe të shkruajnë më shumë.
+            </p>
+
+            <div class="comment">
+                <div class="stars">★★★★★</div>
+
+                "Është shumë e sjellshme dhe
+                na motivon të mësojmë."
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>
