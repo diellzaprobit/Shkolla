@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apliko Tani</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef2f7;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .box {
+            background: white;
+            width: 350px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #bbb;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: 0;
+            padding: 12px 25px;
+            margin: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #174bb5;
+        }
+
+        #zgjedhja, #forma {
+            display: none;
+            margin-top: 20px;
+        }
+
+        input {
+            display: block;
+            width: 90%;
+            padding: 12px;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #222;
+        }
+
+        h2 {
+            color: #2563eb;
+        }
+
+        .cv {
+            text-align: left;
+            margin: 15px auto;
+            width: 90%;
+        }
+
+        .cv input {
+            width: 100%;
+        }
+
+        #sukses {
+            display: none;
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>Apliko Tani</h1>
+
+        <button onclick="zgjedh()">Apliko</button>
+
+        <div id="zgjedhja">
+            <h3>Zgjidh aplikimin</h3>
+
+            <button onclick="hap('Nxënës')">Nxënës</button>
+            <button onclick="hap('Mësues')">Mësues</button>
+        </div>
+
+        <div id="forma">
+
+            <h2 id="titulli"></h2>
+
+            <input type="text" placeholder="Emri">
+            <input type="text" placeholder="Mbiemri">
+            <input type="email" placeholder="Email">
+            <input type="text" placeholder="Numri">
+
+            <div class="cv">
+                <label><b>Ngarko CV-në:</b></label>
+                <input type="file" accept=".pdf,.doc,.docx">
+            </div>
+
+            <button onclick="sukses()">Dërgo Aplikimin</button>
+
+            <p id="sukses">
+                Aplikimi u bë me sukses!<br>
+                Faleminderit për aplikimin tuaj.
+            </p>
+
+        </div>
+
+    </div>
+
+    <script>
+        function zgjedh() {
+            document.getElementById("zgjedhja").style.display = "block";
+        }
+
+        function hap(x) {
+            document.getElementById("forma").style.display = "block";
+            document.getElementById("titulli").innerHTML = x;
+        }
+
+        function sukses() {
+            document.getElementById("sukses").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
