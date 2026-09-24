@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shkolla "Dituria"</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.96);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            height: 75px;
+            margin: auto;
+            padding: 0 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .menu-btn {
+            display: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ================= HOME ================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+
+            padding: 100px 20px 40px;
+
+            background:
+                linear-gradient(
+                    rgba(15, 23, 42, 0.75),
+                    rgba(15, 23, 42, 0.75)
+                ),
+                url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+
+            font-size: 20px;
+            line-height: 1.7;
+            color: #e2e8f0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            margin: 5px;
+
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #0ea5e9;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #0f172a;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #020617;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer h3 {
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #94a3b8;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+
+                position: absolute;
+                top: 75px;
+                left: 0;
+
+                width: 100%;
+
+                background: #0f172a;
+
+                flex-direction: column;
+                align-items: center;
+
+                padding: 25px;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .btn {
+                display: block;
+                margin: 10px auto;
+                max-width: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                Shkolla <span>Dituria</span>
+            </div>
+
+            <div class="menu-btn" onclick="toggleMenu()">
+                ☰
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li>
+                    <a href="#home">Ballina</a>
+                </li>
+
+                <li>
+                    <a href="#about">Rreth Nesh</a>
+                </li>
+
+                <li>
+                    <a href="#programs">Programet</a>
+                </li>
+
+                <li>
+                    <a href="#news">Lajme</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Kontakti</a>
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HOME PAGE ================= -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <h1>
+                    Mirë se vini në
+                    <span>Shkollën Dituria</span>
+                </h1>
+
+                <p>
+                    Edukim cilësor, mundësi të reja dhe një e ardhme
+                    më e mirë për çdo nxënës.
+                </p>
+
+                <a href="#about" class="btn btn-primary">
+                    Mëso më shumë
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Na kontaktoni
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h3>Shkolla "Dituria"</h3>
+
+        <p>
+            © 2026 Shkolla Dituria. Të gjitha të drejtat e rezervuara.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function toggleMenu() {
+            document
+                .getElementById("navLinks")
+                .classList
+                .toggle("active");
+        }
+
+    </script>
+
+</body>
+</html>
